@@ -41,7 +41,8 @@ ConwayGame::ConwayGame(int winX, int winY, int cenX, int cenY){
 
 
 		nonl();
-		keypad(win, TRUE);
+		// keypad(win, TRUE);
+		keypad(stdscr, TRUE);
 		mousemask(ALL_MOUSE_EVENTS, NULL);
 
 }
@@ -91,39 +92,44 @@ void ConwayGame::setBoundaryConditions(int bP){
 		boundaryConditions = bP;
 }
 
-void ConwayGame::processInput(int c){
+void ConwayGame::processInput(wchar_t c){
 
 		int cx = cursX;
 		int cy = cursY;
 		
 		switch(c){
-				
-		case 'a':
+
+		case KEY_UP :
+				if(cy > centerY + 1){
+						cy--;
+				}
+				break;	
+
+		case KEY_LEFT:
 				if( cx > centerX + 1){
 						cx--;
 				}
 				break;
-		case 'd':
+		case KEY_RIGHT:
 				if(cx < winWidth - 1){
 						cx++;
 				}
 				break;
-		case 'w':
-				if(cy > centerY + 1){
-						cy--;
-				}
-				break;
-		case 's':
+		case KEY_DOWN:
 				if(cy < winHeight - 1){
 						cy++;
 				}
 				break;
-		case 'x':
+
+		case KEY_ENTER:
+		case KEY_BREAK:
+		case '\n':
+		case '\r':
 				int x = cx - centerX - 1;
 				int y = cy - centerY - 1;
 				b.set_piece(x, y, !b.get_piece(x, y));
 				break;
-			
+				
 				
 		}
 
@@ -135,7 +141,7 @@ void ConwayGame::processInput(int c){
 }
 
 void ConwayGame::run(){
-		int ch;
+		wchar_t ch;
 
 		std::chrono::time_point<std::chrono::system_clock> old_time = std::chrono::system_clock::now();
 		std::chrono::time_point<std::chrono::system_clock> new_time;

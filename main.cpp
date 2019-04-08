@@ -12,10 +12,9 @@ int main(){
 
 		ConwayGame G(70, 30, 1, 1);
 
-		// G.debugInfo();
+		// // G.debugInfo();
 		
 		G.run();
-		
 		
 
 		return 0;

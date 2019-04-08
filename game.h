@@ -10,6 +10,7 @@
 
 #define  CTR_KEY(k) ((k) & 0x1f)
 
+
 class ConwayGame{
 
 public:
@@ -22,7 +23,7 @@ public:
 		
 		void debugInfo();
 
-		void processInput(int c);
+		void processInput(wchar_t c);
 		void moveCursor(int x, int y);
 
 		void setBoundaryConditions(int bP);
