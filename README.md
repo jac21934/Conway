@@ -16,3 +16,4 @@ Arrow Keys: Controls for cursor in edit mode
 
 Enter/Return: insert/remove cell at cursor in edit mode
 
+Mouse Click: Move cursor to cell and insert/remove cell in edit mode
