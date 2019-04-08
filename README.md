@@ -12,7 +12,7 @@ C-q: quit program
 
 Space: toggle between board edit and play modes
 
-w,a,s,d,: Controls for cursor in edit mode
+w,a,s,d: Controls for cursor in edit mode
 
 x: insert/remove cell at cursor in edit mode
 
