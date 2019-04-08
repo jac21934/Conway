@@ -27,6 +27,8 @@ public:
 		void moveCursor(int x, int y);
 
 		void setBoundaryConditions(int bP);
+
+		void processMouseEvent(int& cx, int& cy);
 		
 		ConwayGame(int winX, int winY, int cenX, int cenY);
 		ConwayGame(int winX, int winY, int cenX, int cenY, int bP);
@@ -37,6 +39,8 @@ private:
 
 		WINDOW* win;
 
+		MEVENT mevent;
+		
 		int cursor_vis;
 
 		int game_state;

@@ -121,6 +121,13 @@ void ConwayGame::processInput(wchar_t c){
 				}
 				break;
 
+
+		case KEY_MOUSE:
+				if(getmouse(&mevent) == OK){
+						processMouseEvent(cx, cy);
+				}
+				break;
+
 		case KEY_ENTER:
 		case KEY_BREAK:
 		case '\n':
@@ -136,6 +143,22 @@ void ConwayGame::processInput(wchar_t c){
 
 		if(cx != cursX || cy !=cursY){
 				moveCursor(cx, cy);
+		}
+
+}
+
+
+void ConwayGame::processMouseEvent(int &cx, int &cy){
+
+		if(mevent.bstate & BUTTON1_PRESSED){
+				cx = mevent.x;
+				cy = mevent.y;
+
+				int x = cx - centerX - 1;
+				int y = cy - centerY - 1;				
+				b.set_piece(x, y, !b.get_piece(x, y));
+	
+
 		}
 
 }

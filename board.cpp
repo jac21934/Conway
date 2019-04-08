@@ -54,8 +54,10 @@ void Board::info(){
 }
 
 bool Board::get_piece(int x, int y){
-		return bvec[x][y];
-
+		if(x < xSize && y < ySize && x >= 0 && y >= 0){ 
+				return bvec[x][y];
+		}
+		return 0;
 }
 
 string Board::get(string var){
@@ -80,10 +82,10 @@ void Board::print(){
 }
 
 void Board::set_piece(int x, int y, bool c){
-		if( x < xSize && y < ySize){
+		if( x < xSize && y < ySize && x >= 0 && y >= 0){
 				bvec[x][y] = c;
 		}
-		
+	
 }
 
 void Board::refresh_board(){
@@ -189,7 +191,7 @@ bool Board::check_cell(int x, int y, bool orig){
 
 		
 		//checking if cell lives of dies
-		if( orig){
+		if(orig) {
 				
 				if(live < 2){   // live cell with < 2 neighbors dies
 						return 0;
@@ -216,4 +218,5 @@ bool Board::check_cell(int x, int y, bool orig){
 
 		}
 
+		return 0; //if this happens something has broken
 }
